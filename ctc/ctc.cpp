@@ -32,7 +32,7 @@ auto read_graph() -> void
         f >> x >> y;
 
         g_graph[x].push_back(y);
-        g_graph_t[y].push_back(x);
+        g_graph_t[y].push_back(x); // transpus
     }
 }
 
@@ -49,7 +49,7 @@ auto dfs(int const i) -> void
         dfs(node);
     }
 
-    g_dfs_rev.push_back(i); // pun nodurile in ordinea "inversa"
+    g_dfs_rev.push_back(i); // pun nodurile in ordinea "inversa"(vreau ca nodul din care pornesc sa fie ultimul adaugat)
 }
 
 // dfs pentru graful transpus
@@ -60,10 +60,11 @@ auto dfs_t(int const i, int const index) -> void
         return;
     }
 
-    g_ctc_index[i] = index;
-    g_components[index].push_back(i);
+    g_ctc_index[i] = index;           // marcheaza ca nodul i apartine unui grup
+    g_components[index].push_back(i); // de asemenea retine nodurile pentru grupul 'index'
 
     for(auto const node : g_graph_t[i]) {
+        // toti vecinii apartin grpului 'index'
         dfs_t(node, index);
     }
 }
@@ -79,6 +80,7 @@ auto main() noexcept -> int
         dfs(i);
     }
 
+    // incepe practic de la radacina din dfs-ul normal, parcurge toti vecinii si marcheaza grupurile
     for(auto it = g_dfs_rev.rbegin(); it != g_dfs_rev.rend(); ++it) {
         int const el = *it;
 
@@ -89,6 +91,7 @@ auto main() noexcept -> int
 
     g << num_comp << '\n';
 
+    // afiseaza componentele in sine
     for(auto const& p : g_components) {
         for(int const e : p.second) {
             g << e << ' ';
