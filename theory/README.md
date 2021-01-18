@@ -12,6 +12,10 @@
 ## Lant
 - Secventa de varfuri cu propr. ca oricare 2 vf. consecutive sunt adiacente
 
+## Lant vs Drum
+- La lant nu conteaza orientarea arcelor, conteaza doar ca oricare 2 noduri consecutive exista o muchie cu acele extremitati
+- La drum trebuie sa pot sa merg efectiv prin noduri
+
 ## Graf Partial
 - Un graf care are aceleasi varfuri cu graful "mare", si multimea muchiilor e inclusa in cea a grafului "mare"
 
@@ -155,6 +159,48 @@ for k:
   for i:
     for j:
       d[i][j] = d[i][j] or (d[i][k] and d[k][j])
+```
+
+## Flux
+- Orice retea admite cel putin un flux, cel vid
+
+## Flux Maxim
+- Ford-Fulkerson: complexitate O(mL) sau O(nmC)
+- Edmonds-Karp - o varianta de Ford-Fulkerson
+
+## Edmonds-Karp
+- Complexitate: O(n m^2)
+- Ceva de genul:
+```python
+def bfs():
+    nodes = [start_node] # queue
+
+    while not nodes.empty():
+        current = nodes.pop()
+
+        for neighbor in graph[current]:
+            if parent[neighbor] == 0 and capacity[current][neighbor] > 0:
+                parent[neighbor] = current
+                nodes.push(neighbor)
+
+    return parent[graph.count()]
+```
+Folosit asa:
+```python
+capacity[i][j] = capcity # Input
+capacity[j][i] = 0 # graful rezidual
+
+while bfs() != 0:
+    for neighbor in graph[-1]:
+        min_capacity = capacity[neighbor][graph.count()]
+        min_capacity = min(min_capacity, capacity[parent[i]][i] for i = neighbor, i != start_node, i = parent[i])
+
+        capacity[parent[i]][i] -= min_capacity
+        capacity[i][parent[i]] += min_capacity # rezidual
+
+        flow += min_capacity
+
+    parent.fill(0)
 ```
 
 # Probleme
