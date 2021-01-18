@@ -223,12 +223,16 @@ while bfs() != 0:
 ## Teorema lui Euler
 - Un graf G e eulerian <=> orice varf din G e par
 - G are un lant eulerian <=> G are cel mult 2 varfuri de grad impar
+- |V| - |E| + |F| = 2
 
 ## Graf Eulerian
 - Algoritmul lui Hierholzer pt a determina ciclu eulerian:
   * Complexitate: O(m)
   * Pornesc cu un ciclu eulerian, aleg un nod, ii adaug muchiile incidente care nu se gasesc in ciclu, repeta
   * Daca sirul contine toate muchiile, graful e eulerian
+
+## Graf Planar
+- Admite o reprezentare in plan a.i. muchiilor le corespund segmente de curbe continue care nu se intersecteaza in interior unele pe altele
 
 # Probleme
 
