@@ -120,6 +120,42 @@ while not queue.empty():
                 distance[neighbor] = distance[node] + cost(node, neighbor)
     ```
   * Complexitate: O(M + N)
+- Pentru drum minim intre toate perechile de varfuri(pot fi costuri negative dar nu cicluri de cost negativ):
+  * Floyd-Warshall: Complexitate O(n^3)
+  * Pentru k = 1..=n se calculeaza costul minim de la i la j avand varfuri intermediare doar din multimea {1, 2, ..., k}
+  * Ceva de genul:
+  ```python
+  distance[i][j] = weight[i][j]
+  parent[i][j] = i if ij in edges else 0
+
+  for k in 1..=n:
+      for i in 1..=n:
+          for j in 1..=n:
+              if distance[i][j] > distance[i][k] + distance[k][j]:
+                  distance[i][j] = distance[i][k] + distance[k][j]
+                  parent[i][j] = parent[k][j]
+  ```
+  * Pentru a vedea si drumul:
+  ```python
+  def path(i, j):
+      if i != j:
+          path(i, parent[i][j])
+      print(j)
+  ```
+  * Daca A = matrice de adiacenta atunci a_ij^k din A^k reprezinta numarul de drumuri distincte de lungime k de la i la j(nu neaparat elementare)
+
+## Inchidere Tranzitiva
+- Roy-Warshall: complexitate O(n^3)
+- Graf NEPONDERAT
+- Ceva de genul:
+```python
+d = # matrice de adiacenta
+# Ca la Floyd-Warshall
+for k:
+  for i:
+    for j:
+      d[i][j] = d[i][j] or (d[i][k] and d[k][j])
+```
 
 # Probleme
 
