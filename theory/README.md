@@ -220,6 +220,16 @@ while bfs() != 0:
   * Asociez fiecarui arc capacitatea 1
   * Calculez fluxul maxim
 
+## Teorema lui Euler
+- Un graf G e eulerian <=> orice varf din G e par
+- G are un lant eulerian <=> G are cel mult 2 varfuri de grad impar
+
+## Graf Eulerian
+- Algoritmul lui Hierholzer pt a determina ciclu eulerian:
+  * Complexitate: O(m)
+  * Pornesc cu un ciclu eulerian, aleg un nod, ii adaug muchiile incidente care nu se gasesc in ciclu, repeta
+  * Daca sirul contine toate muchiile, graful e eulerian
+
 # Probleme
 
 ## Nodurile Comune Lanturilor Optime Intre X si Y
