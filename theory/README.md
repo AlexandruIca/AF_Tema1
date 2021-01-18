@@ -48,10 +48,65 @@ la final daca parcurg sortarea topologica si daca index-ul unui parinte nu apare
 ## Muchii de Intoarcere
 - Leaga un fiu cu un stramos de-al lui in arbore, nu pot fi critice
 
+## Arbori Partiali
+- Orice graf neorientat conex contine un arbore partial
+
+## Arbori Partiali de Cost Minim
+- Prim & Kruskal
+- Nu sunt unici, dar mai multi arbori partiali de cost minim au acelasi cost
+
+## Kruskal
+- Complexitate pentru liste de adiacenta(pentru matrice de adiacenta: Prim):
+  * Sortare: O(m log m) = O(m log n)
+  * n * reuniune: O(n^2)
+  * Per total: O(m log n + n^2)
+- Ordonez muchiile crescator dupa cost
+- O muchie de la `a` la `b` nu formeaza ciclu daca `grupa[a] != grupa[b]`
+- Pentru a vedea ce grupa are un nod:
+```python
+def get_group(node):
+    if group[node] == node:
+        return node
+
+    group[node] = get_group[group[node]]
+    return group[node]
+``` 
+- Pentru a adauga o muchie de la `a` la `b` se reuneste grupa lui `a` cu `b`:
+```python
+def union(a, b):
+    group[get_group(a)] = get_group(b)
+```
+- Pentru fiecare muchie, daca nu formeaza ciclu cu graful deja format, adaug la APCM
+- Ma opresc la n-1 muchii
+
+## Prim
+- Complexitate:
+  * Search: O(V^2)
+  * Heap: O((V + E) log V)
+  * Fibonacci heap: O(E + (V log V))
+- Pornesc de la un nod care formeaza arborele si adaug noduri vecine cu cost minim
+- Pot sa tin nodurile vecine intr-un heap sortat dupa distante
+- Ceva de genul:
+```python
+start_node = 1
+queue = [start_node]
+distance.fill(inf)
+parent.fill(0)
+distance[start_node] = 0
+
+while not queue.empty():
+    node = queue.extract_min()
+    add_to_tree(node)
+    
+    for neighbor in graph[node]:
+       queue.append(neighbor)
+```
+
 # Probleme
 
 ## Nodurile Comune Lanturilor Optime Intre X si Y
 <!-- Graf -->
+- Complexitate: O(V + E)
 - 2 bfs-uri, unul pornind de la X, celalat de la Y, tinand distantele in 2 vectori(dist\_start, dist\_end)
 - Un nod se afla sigur intr-un lant optim daca:
 ```
@@ -62,6 +117,7 @@ dist_start[nod] + dist_end[nod] == dist_start[Y]
 
 ## Determinarea Componentelor Tare Conexe
 <!-- ctc -->
+- Complexitate: O(V + E)
 - Tin si graful normal si cel transpus
 - Fac dfs pe cel normal, tin dfs-ul intr-un vector `lista`
 - Parcurg `lista` in ordine inversa, facand dfs pe graful transpus:
