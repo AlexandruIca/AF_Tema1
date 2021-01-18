@@ -16,6 +16,12 @@
 - La lant nu conteaza orientarea arcelor, conteaza doar ca oricare 2 noduri consecutive exista o muchie cu acele extremitati
 - La drum trebuie sa pot sa merg efectiv prin noduri
 
+## Drum Eulerian
+- Trece prin fiecare muchie exact odata
+
+## Drum Hamiltonian
+- Trece prin fiecare varf exact odata
+
 ## Graf Partial
 - Un graf care are aceleasi varfuri cu graful "mare", si multimea muchiilor e inclusa in cea a grafului "mare"
 
