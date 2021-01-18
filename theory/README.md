@@ -165,7 +165,7 @@ for k:
 - Orice retea admite cel putin un flux, cel vid
 
 ## Flux Maxim
-- Ford-Fulkerson: complexitate O(mL) sau O(nmC)
+- Ford-Fulkerson: complexitate O(mL) sau O(nmC), C = capacitate
 - Edmonds-Karp - o varianta de Ford-Fulkerson
 
 ## Edmonds-Karp
@@ -209,6 +209,18 @@ while bfs() != 0:
   * Algoritm pentru a testa daca un graf este bipartit:
     - Coloram cu 2 culori un arbore partial al sau printr-o parcurgere(coloram orice vecin j nevizitat al varfului curent i cu o culoare diferita de cea a lui i)
     - Testam daca celelalte muchii de la i la vecini j deja vizitati au extremitatile i si j colorate diferit
+
+## Cuplaj
+- Multime M inclusa in multimea muchiilor grafului in care oricare 2 muchii nu sunt adiacente
+- Cuplaj de cardinal maxim: cat mai multe muchii
+
+## Cuplaj Maxim in Graf Bipartit
+- Reducerea la flux maxim:
+  * Complexitate: O(n m)
+  * Se adauga 2 noduri s si t, unul inainte de prima partitie, al doilea la final
+  * Se transforma muchiile in graful bipartit in arce(directie)
+  * Asociez fiecarui arc capacitatea 1
+  * Calculez fluxul maxim
 
 # Probleme
 
