@@ -54,6 +54,7 @@ la final daca parcurg sortarea topologica si daca index-ul unui parinte nu apare
 ## Arbori Partiali de Cost Minim
 - Prim & Kruskal
 - Nu sunt unici, dar mai multi arbori partiali de cost minim au acelasi cost
+- Folositori la probleme de clustering
 
 ## Kruskal
 - Complexitate pentru liste de adiacenta(pentru matrice de adiacenta: Prim):
@@ -101,6 +102,24 @@ while not queue.empty():
     for neighbor in graph[node]:
        queue.append(neighbor)
 ```
+
+## Drum Minim
+- Pentru un graf care nu e ponderat: BFS
+- Un arbore partial de cost minim nu este neaparat un arbore de distante minime
+- De la un nod la toate celelalte: Dijkstra
+  * Daca avem muchii cu cost negativ: Bellman-Ford
+  * Pentru cost negativ, NU se poate aduna o constanta la fiecare cost, dupa aplicand Dijkstra
+- Intre orice pereche de noduri: Floyd Warshall
+- Pentru un DAG:
+  * Parcurg varfurile in ordinea data de sortarea topologica
+  * Relaxez pentru fiecare varf arcele care ies din el
+  * ```python
+    for node in top_sort():
+        for neighbor in graph[node]:
+            if distance[node] + cost(node, neighbor) < distance[neighbor]:
+                distance[neighbor] = distance[node] + cost(node, neighbor)
+    ```
+  * Complexitate: O(M + N)
 
 # Probleme
 
