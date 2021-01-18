@@ -22,6 +22,9 @@
 ## Drum Hamiltonian
 - Trece prin fiecare varf exact odata
 
+## Graf Eulerian/Hamiltonian
+- Admite ciclu eulerian/hamiltonian
+
 ## Graf Partial
 - Un graf care are aceleasi varfuri cu graful "mare", si multimea muchiilor e inclusa in cea a grafului "mare"
 
@@ -233,6 +236,11 @@ while bfs() != 0:
 
 ## Graf Planar
 - Admite o reprezentare in plan a.i. muchiilor le corespund segmente de curbe continue care nu se intersecteaza in interior unele pe altele
+
+## Graf Hamiltonian
+- Conditie necesara: biconex(fara noduri critice, nu toate grafurile biconexe sunt hamiltoniene)
+- Teorema lui Dirac: daca fiecare varf are grad cel putin n/2 are un ciclu hamiltonian
+- Teorema lui Ore: Pentru un graf G cu n >= 3, daca avem pentru oricare pereche de noduri neadiacente `deg(x) + deg(y) >= n` atunci graful e hamiltonian
 
 # Probleme
 
