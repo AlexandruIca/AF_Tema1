@@ -25,14 +25,6 @@ grafului "mare"
 - Un graf G1 se numeste subgraf indus de G daca multimea varfurilor e inclusa in cea a lui G, iar toate muchiile din G
 au extremitatile in multimea varfurilor G1
 
-## Graf Bipartit
-- Un graf G = (V, E) care se poate imparti in:
-```
-V = V1 + V2(reuniune)
-V1 & V2 = none(intersectie)
-|e & V1| = |e & V2| = 1 forall e in E
-```
-
 ## Graf Transpus
 - Matricea de adiacență transpusă
 - Folosit de exemplu pentru aflarea componentelor tare conexe
