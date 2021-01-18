@@ -87,6 +87,28 @@ for el in lista.reverse():
 
 ## Determinarea Punctelor/Muchiilor Critice
 - Complexitate: O(V + E)
+- Ceva de genul:
+```python
+def dfs(node):
+    visited[node] = True
+    min_level[node] = level[node]
+
+    for neighbor in graph[node]:
+        if not visited[neighbor]:
+            level[neighbor] = level[node] + 1
+            dfs(neighbor)
+            min_level[node] = min(min_level[node], min_level[neighbor])
+
+            if min_level[neighbor] > min_level[node]:
+                # Muchie critica
+        else:
+            if level[neighbor] < level[node] - 1:
+                # Muchie de intoarcere
+                min_level[node] = min(min_level[node], min_level[neighbor])
+```
+- Pentru puncte critice:
+  * Daca e radacina si are cel putin 2 fii
+  * Are cel putin un fiu j cu `min_level[j] >= level[i]`
 
 ## Bellman-Ford
 - Complexitate: O(EV)
