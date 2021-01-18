@@ -203,6 +203,13 @@ while bfs() != 0:
     parent.fill(0)
 ```
 
+## Graf Bipartit
+- Teorema Konig:
+  * Graful G este bipartit <=> toate ciclurile elementare din G sunt pare
+  * Algoritm pentru a testa daca un graf este bipartit:
+    - Coloram cu 2 culori un arbore partial al sau printr-o parcurgere(coloram orice vecin j nevizitat al varfului curent i cu o culoare diferita de cea a lui i)
+    - Testam daca celelalte muchii de la i la vecini j deja vizitati au extremitatile i si j colorate diferit
+
 # Probleme
 
 ## Nodurile Comune Lanturilor Optime Intre X si Y
