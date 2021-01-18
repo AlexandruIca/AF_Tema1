@@ -242,6 +242,12 @@ while bfs() != 0:
 - Teorema lui Dirac: daca fiecare varf are grad cel putin n/2 are un ciclu hamiltonian
 - Teorema lui Ore: Pentru un graf G cu n >= 3, daca avem pentru oricare pereche de noduri neadiacente `deg(x) + deg(y) >= n` atunci graful e hamiltonian
 
+## P/NP
+- P: clasa problemelor de decizie(cu raspuns da sau nu, de exemplu: "Are graful G ciclu hamiltonian? O(1.657^n)) ce se pot rezolva in timp polinomial
+- NP: clasa problemelor de decizie ce se pot rezolva in timp liniar pe o masina nedeterminista
+- NP complete: daca se gaseste rezolvarea pentru ele se pot rezolva toate celelalte in timp polinomial(de ex. ciclu hamiltonian, clica)
+- Incearca sa estimeze pentru mai multe incercari
+
 # Probleme
 
 ## Nodurile Comune Lanturilor Optime Intre X si Y
